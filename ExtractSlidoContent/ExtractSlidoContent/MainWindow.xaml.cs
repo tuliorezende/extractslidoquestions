@@ -45,11 +45,7 @@ namespace ExtractSlidoContent
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.Load(fileContent.Text);
 
-            var results = htmlDoc.DocumentNode
-                .Descendants("span")
-                .Where(n => n.GetClasses().Count() == 1
-                         && n.HasClass("ng-star-inserted"))
-                .Select(x => x.InnerText).ToArray();
+            string[] results = ReturnExtractedQuestions(htmlDoc);
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "TXT Files (*.txt)|*.txt";
@@ -68,6 +64,20 @@ namespace ExtractSlidoContent
             }
 
             Process.Start("notepad.exe", saveFileDialog.FileName);
+        }
+
+        private static string[] ReturnExtractedQuestions(HtmlDocument htmlDoc)
+        {
+            /*TODO: realizar nova maneira de extração das perguntas baseado no dia (por exemplo, pegando por "today" ou por um valor escrito no form
+
+            Procurar pelo componente "admin-event-questions-item-desktop" que tem a classe ng-star-inserted, 
+            e ver se em algum dos filho dele, existe um span com a classe mr8 hide-in-percy e o inner text contenha o valor desejado
+            ...se sim...realizar a extração atual*/
+            return htmlDoc.DocumentNode
+                .Descendants("span")
+                .Where(n => n.GetClasses().Count() == 1
+                         && n.HasClass("ng-star-inserted"))
+                .Select(x => x.InnerText).ToArray();
         }
     }
 }

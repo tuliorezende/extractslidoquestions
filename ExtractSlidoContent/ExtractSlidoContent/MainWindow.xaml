@@ -8,6 +8,7 @@
         Title="MainWindow" Height="480" Width="800"
         WindowStartupLocation="CenterOwner">
     <Grid>
+        <Label Content="Escolha o arquivo HTML para extração" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>
         <Button Content="Upload" Name="Upload" HorizontalAlignment="Left" Margin="666,50,0,0" VerticalAlignment="Top" Width="107" Height="28" Click="Upload_Click"/>
         <TextBox IsEnabled="False" x:Name="fileContent" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="651" Height="28"/>
         <Button Content="Get Questions" Name="Questions" HorizontalAlignment="Left" Margin="666,388,0,0" Width="107" Height="28" VerticalAlignment="Top" Click="Questions_Click"/>
